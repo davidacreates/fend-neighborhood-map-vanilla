@@ -64,7 +64,9 @@ class App extends Component {
     // add an event listener to open/close the infowindow on click
     const { venues } = this.state;
     venues.map(v => {
-      const contentString = `${v.name}`;
+      const contentString = `
+      <p>${v.name}</p>
+      `;
       const marker = new window.google.maps.Marker({
         position: { lat: v.location.lat, lng: v.location.lng },
         map,
