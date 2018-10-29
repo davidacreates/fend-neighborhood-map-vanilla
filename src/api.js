@@ -4,6 +4,12 @@ import { SQUARE_CLIENT_ID, SQUARE_CLIENT_SECRET } from './credentials';
 // TODO: Figure out which functions do not need to be exported and remove export
 // TODO: Add error handling for the functions (specifically the api calls)
 
+export const DEFAULT_CENTER = {
+  lat: -8.50816538798171,
+  lng: 115.26523320127842,
+};
+export const DEFAULT_ZOOM = 15;
+
 export function mapBase() {
   return 'https://maps.googleapis.com/maps/api/js?v=3.exp&';
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MAP_API_KEY } from './credentials';
-import { searchVenues } from './api';
+import { searchVenues, DEFAULT_CENTER, DEFAULT_ZOOM } from './api';
 import './App.css';
 
 // load google maps script
@@ -39,7 +39,7 @@ class App extends Component {
   getVenues = () => {
     searchVenues({
       near: 'Ubud',
-      query: 'food',
+      query: 'coffee',
       limit: 10,
     })
       .then(res => {
@@ -53,20 +53,27 @@ class App extends Component {
 
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: -8.509921, lng: 115.269213 },
-      zoom: 15,
+      center: DEFAULT_CENTER,
+      zoom: DEFAULT_ZOOM,
     });
 
+    // initialize an infowindow for each marker and populate content
+    const infowindow = new window.google.maps.InfoWindow();
+
     // map over the venues and display individual markers based on their lat and lng values
+    // add an event listener to open/close the infowindow on click
     const { venues } = this.state;
     venues.map(v => {
       const contentString = `${v.name}`;
-      const infowindow = new window.google.maps.InfoWindow({
-        content: contentString,
-      });
       const marker = new window.google.maps.Marker({
         position: { lat: v.location.lat, lng: v.location.lng },
         map,
+      });
+      marker.addListener('click', () => {
+        // set the content of the infowindow
+        infowindow.setContent(contentString);
+        // open infowindow
+        infowindow.open(map, marker);
       });
       return marker;
     });
