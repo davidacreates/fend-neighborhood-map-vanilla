@@ -74,6 +74,15 @@ Develop a single page application featuring a map of your neighborhood or a neig
 
 2.  If multiple components need the same piece of state, put that piece of state into those components' parent-most component.
 
-If you can’t find a component where it makes sense to own the state, create
-a new component simply for holding the state and add it somewhere in the
-hierarchy above the common owner component.
+If you can’t find a component where it makes sense to own the state, create a new component simply for holding the state and add it somewhere in the hierarchy above the common owner component.
+
+state:
+- venues
+- markers
+- query
+- iconAnimation
+- openInfoWindow
+- closeInfoWindow
+- getVenueDetails
+- selectVenueListItem
+- filterVenues

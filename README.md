@@ -3,6 +3,7 @@
 ## Overview
 
 ## Acknowledgements
+- [Making Google Maps work with React](https://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/)
 - [React Google Maps](https://tomchentw.github.io/react-google-maps/)
 - [Wes Bos - Heres how React's New Context API Works](https://www.youtube.com/watch?v=XLJN4JfniH4)
 - [LevelUpTuts - 8 Tips For Getting Better At React](https://www.youtube.com/watch?v=BncMF2aTL0w)
