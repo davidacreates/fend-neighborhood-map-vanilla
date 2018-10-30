@@ -81,43 +81,58 @@ class App extends Component {
         }
       });
 
-      // open infowindow on marker click
+      // open the infowindow on marker click
       marker.addListener('click', () => {
-        // set the content of the infowindow
         infowindow.setContent(contentString);
-        // open infowindow
         infowindow.open(map, marker);
       });
       markers.push(marker);
       return marker;
     });
-    this.setState({ markers });
+    this.setState({ markers, filteredVenues: venues });
   };
 
   // filter the list of markers based on the query input
   // toggle the marker's visibility to true or false based on the query
   filterList = query => {
-    const { markers } = this.state;
+    const { markers, venues } = this.state;
+    const f = venues.filter(v =>
+      v.name.toLowerCase().includes(query.toLowerCase())
+    );
     markers.filter(
       m =>
         m.name.toLowerCase().includes(query.toLowerCase())
           ? m.setVisible(true)
           : m.setVisible(false)
     );
-    this.setState({ query });
+    this.setState({ filteredVenues: f, query });
   };
 
   render() {
-    const { query } = this.state;
+    const { query, filteredVenues } = this.state;
     return (
       <>
         <div id="map" />
         <div id="sidebar">
+          <h1>
+            <span role="img" aria-label="coffee cup">
+              ☕
+            </span>{' '}
+            Brewing In Ubud
+          </h1>
           <input
             type="text"
+            placeholder="Filter Coffee Shops"
             value={query}
             onChange={e => this.filterList(e.target.value)}
           />
+          {filteredVenues &&
+            filteredVenues.length > 0 &&
+            filteredVenues.map((v, index) => (
+              <div className="venueListItem" key={index}>
+                {v.name}
+              </div>
+            ))}
         </div>
       </>
     );
