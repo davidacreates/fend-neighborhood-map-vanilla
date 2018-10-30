@@ -1,14 +1,12 @@
 import axios from 'axios';
-import { SQUARE_CLIENT_ID, SQUARE_CLIENT_SECRET } from './credentials';
+import { SQUARE_CLIENT_ID, SQUARE_CLIENT_SECRET } from '../credentials';
 
 // TODO: Figure out which functions do not need to be exported and remove export
 // TODO: Add error handling for the functions (specifically the api calls)
 
-export const DEFAULT_CENTER = {
-  lat: -8.50816538798171,
-  lng: 115.26523320127842,
-};
-export const DEFAULT_ZOOM = 15;
+// foursquare and google maps api are both used for this project
+// https://developer.foursquare.com/
+// https://developers.google.com/maps/documentation/javascript/tutorial
 
 export function mapBase() {
   return 'https://maps.googleapis.com/maps/api/js?v=3.exp&';
@@ -55,7 +53,7 @@ export function squareParamsFetch(endpoint, urlParams) {
 }
 
 // returns a list of venues near the current location
-export function searchVenues(urlParams) {
+export function getVenues(urlParams) {
   return squareParamsFetch('search', urlParams);
 }
 

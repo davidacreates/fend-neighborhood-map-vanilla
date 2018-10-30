@@ -11,12 +11,12 @@ Develop a single page application featuring a map of your neighborhood or a neig
 - [x] Write code required to display map markers identifying at least 5 locations that you are interested in within this neighborhood.
 - [] Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied.
 - [x] Clicking a marker displays unique information about a location somewhere on the page (modal,separate div, inside an infoWindow).
-[] Any additional custom functionality provided in the app functions error-free.
+- [] Any additional custom functionality provided in the app functions error-free.
 
 ### List View
 - [] A list-view of location names is provided which displays all locations by default
 - [] Clicking a location on the list displays unique information about the location from a 3rd party API, and animates its associated map marker (e.g. bouncing, color change.)
-- [] Provide attribution to the data sources and/or APIs you use (e.g., if you are using Foursquare, indicate somewhere in your interface and in your README that you used the Foursquare API)
+- [x] Provide attribution to the data sources and/or APIs you use (e.g., if you are using Foursquare, indicate somewhere in your interface and in your README that you used the Foursquare API)
 - [] List functionality is responsive and runs error free.
 
 ### Location Filter

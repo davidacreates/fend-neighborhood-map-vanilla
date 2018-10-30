@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
 import { MAP_API_KEY } from './credentials';
-import { searchVenues, DEFAULT_CENTER, DEFAULT_ZOOM } from './api';
+import { loadScript } from './utils/helpers';
+import { getVenues } from './utils/api';
 import './App.css';
-
-// load google maps script
-// reference: https://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/
-function loadJS(url) {
-  const ref = window.document.getElementsByTagName('script')[1];
-  const script = window.document.createElement('script');
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  ref.parentNode.insertBefore(script, ref);
-}
 
 class App extends Component {
   state = {
     venues: [],
+    markers: [],
+    query: '',
   };
 
   // get the venues from the api
   componentDidMount = () => {
-    this.getVenues();
+    this.loadVenues();
   };
 
   // load the google maps script
-  loadMap = () => {
-    loadJS(
+  loadGoogleMaps = () => {
+    loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${MAP_API_KEY}&callback=initMap`
     );
     // connect the initMap() function to the global window context, so google maps can invoke it
@@ -36,15 +28,15 @@ class App extends Component {
   // make api call and get the venues based on submitted parameters
   // map over the response (venues) and update the marker state
   // asynchronously load the Google Maps script
-  getVenues = () => {
-    searchVenues({
+  loadVenues = () => {
+    getVenues({
       near: 'Ubud',
       query: 'coffee',
       limit: 10,
     })
       .then(res => {
         const { venues } = res.data.response;
-        this.setState({ venues }, this.loadMap());
+        this.setState({ venues }, this.loadGoogleMaps());
       })
       .catch(error => {
         console.log(error);
@@ -52,9 +44,11 @@ class App extends Component {
   };
 
   initMap = () => {
+    const { venues } = this.state;
+    const markers = [];
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: DEFAULT_CENTER,
-      zoom: DEFAULT_ZOOM,
+      center: { lat: venues[6].location.lat, lng: venues[6].location.lng },
+      zoom: 14,
     });
 
     // initialize an infowindow for each marker and populate content
@@ -62,7 +56,7 @@ class App extends Component {
 
     // map over the venues and display individual markers based on their lat and lng values
     // add an event listener to open/close the infowindow on click
-    const { venues } = this.state;
+    // update the markers state with the markers
     venues.map(v => {
       const contentString = `
       <p>${v.name}</p>
@@ -70,6 +64,9 @@ class App extends Component {
       const marker = new window.google.maps.Marker({
         position: { lat: v.location.lat, lng: v.location.lng },
         map,
+        id: v.id,
+        name: v.name,
+        animation: window.google.maps.Animation.DROP,
       });
       marker.addListener('click', () => {
         // set the content of the infowindow
@@ -77,14 +74,37 @@ class App extends Component {
         // open infowindow
         infowindow.open(map, marker);
       });
+      markers.push(marker);
       return marker;
     });
+    this.setState({ markers });
+  };
+
+  // filter the list of markers based on the query input
+  // toggle the marker's visibility to true or false based on the query
+  filterList = query => {
+    const { markers } = this.state;
+    markers.filter(
+      m =>
+        m.name.toLowerCase().includes(query.toLowerCase())
+          ? m.setVisible(true)
+          : m.setVisible(false)
+    );
+    this.setState({ query });
   };
 
   render() {
+    const { query } = this.state;
     return (
       <>
         <div id="map" />
+        <div id="sidebar">
+          <input
+            type="text"
+            value={query}
+            onChange={e => this.filterList(e.target.value)}
+          />
+        </div>
       </>
     );
   }
