@@ -68,6 +68,20 @@ class App extends Component {
         name: v.name,
         animation: window.google.maps.Animation.DROP,
       });
+
+      // animate marker on click
+      marker.addListener('click', () => {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          setTimeout(() => {
+            marker.setAnimation(null);
+          }, 100);
+        }
+      });
+
+      // open infowindow on marker click
       marker.addListener('click', () => {
         // set the content of the infowindow
         infowindow.setContent(contentString);
