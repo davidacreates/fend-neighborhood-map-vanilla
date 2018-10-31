@@ -43,6 +43,7 @@ Develop a single page application featuring a map of your neighborhood or a neig
 ### Documentation
 - [] A README file is included detailing all steps required to successfully run the application.
 - [] Comments are present and effectively explain longer code procedures.
+- [] Remove all to-dos in my code
 
 #### Step 1. Break down the app into a hierarchy of components. Draw a box around each React component.
 - App
