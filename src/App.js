@@ -66,6 +66,7 @@ class App extends Component {
         map,
         id: v.id,
         name: v.name,
+        isOpen: false,
         animation: window.google.maps.Animation.DROP,
       });
 
@@ -90,6 +91,18 @@ class App extends Component {
       return marker;
     });
     this.setState({ markers, filteredVenues: venues });
+  };
+
+  // filter markers based on list item clicked
+  handleListItemClick = v => {
+    // const infowindow = new window.google.maps.InfoWindow();
+    const contentString = `
+      <p>${v.name}</p>
+      `;
+    const { markers } = this.state;
+    const marker = markers.filter(m => m.id === v.id)[0];
+    // infowindow.setContent(contentString);
+    // infowindow.open(this.map, marker);
   };
 
   // filter the list of markers based on the query input
@@ -129,7 +142,13 @@ class App extends Component {
           {filteredVenues &&
             filteredVenues.length > 0 &&
             filteredVenues.map((v, index) => (
-              <div className="venueListItem" key={index}>
+              <div
+                className="venueListItem"
+                key={index}
+                onClick={() => {
+                  this.handleListItemClick(v);
+                }}
+              >
                 {v.name}
               </div>
             ))}
