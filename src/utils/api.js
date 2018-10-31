@@ -4,7 +4,7 @@ import { SQUARE_CLIENT_ID, SQUARE_CLIENT_SECRET } from '../credentials';
 // TODO: Figure out which functions do not need to be exported and remove export
 // TODO: Add error handling for the functions (specifically the api calls)
 
-// foursquare and google maps api are both used for this project
+// foursquare and google maps apis are both used for this project
 // https://developer.foursquare.com/
 // https://developers.google.com/maps/documentation/javascript/tutorial
 

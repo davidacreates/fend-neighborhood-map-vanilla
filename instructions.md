@@ -9,18 +9,18 @@ Develop a single page application featuring a map of your neighborhood or a neig
 
 - [x] Add a full-screen map to your page using the Google Maps API. For the sake of efficiency, the map API should be called only once.
 - [x] Write code required to display map markers identifying at least 5 locations that you are interested in within this neighborhood.
-- [] Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied.
+- [x] Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied.
 - [x] Clicking a marker displays unique information about a location somewhere on the page (modal,separate div, inside an infoWindow).
 - [] Any additional custom functionality provided in the app functions error-free.
 
 ### List View
-- [] A list-view of location names is provided which displays all locations by default
-- [] Clicking a location on the list displays unique information about the location from a 3rd party API, and animates its associated map marker (e.g. bouncing, color change.)
+- [x] A list-view of location names is provided which displays all locations by default
+- [x] Clicking a location on the list displays unique information about the location from a 3rd party API, and animates its associated map marker (e.g. bouncing, color change.)
 - [x] Provide attribution to the data sources and/or APIs you use (e.g., if you are using Foursquare, indicate somewhere in your interface and in your README that you used the Foursquare API)
 - [] List functionality is responsive and runs error free.
 
 ### Location Filter
-- [] Includes a text input field or dropdown menu that filters the map markers and list items to locations matching the text input or selection. Filter function runs error-free.
+- [x] Includes a text input field or dropdown menu that filters the map markers and list items to locations matching the text input or selection. Filter function runs error-free.
 
 ### Asynchronous Data Usage
 - [x] Application utilizes the Google Maps API or another mapping system and at least one non-Google third-party API

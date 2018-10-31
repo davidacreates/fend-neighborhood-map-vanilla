@@ -1,4 +1,4 @@
-import MAP_API_KEY from '../credentials';
+import { MAP_API_KEY } from '../credentials';
 
 // load google maps script
 // reference: https://github.com/ryanwaite28/script-store/blob/master/js/react_resolve_google_maps.js
@@ -12,14 +12,14 @@ export function loadGoogleMaps() {
       delete window.resolveGoogleMapsPromise;
     };
     // Now, Load the Google Maps API
-    const script = document.createElement(`'script'`);
+    const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${MAP_API_KEY}&callback=resolveGoogleMapsPromise`;
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
 
     // TODO: See if this reject message actually works
-    window.google.reject = function() {
+    window.reject = function() {
       const message = `Could not load google maps`;
       reject(new Error(message));
     };
