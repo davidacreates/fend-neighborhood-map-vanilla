@@ -25,8 +25,8 @@ Develop a single page application featuring a map of your neighborhood or a neig
 ### Asynchronous Data Usage
 - [x] Application utilizes the Google Maps API or another mapping system and at least one non-Google third-party API
 - [x] All data requests are retrieved in an asynchronous manner using either the Fetch API or XMLHttpRequest.
-- [] Data requests that fail are handled gracefully using common fallback techniques (i.e. AJAX error or fail methods). 'Gracefully' means the user isn’t left wondering why a component isn’t working. If an API doesn’t load there should be some visible indication on the page that it didn’t load.
-- [] You should handle errors if the browser has trouble initially reaching the third-party site as well. For example, consider a user using your Neighborhood Map, but the user's firewall prevents him/her from accessing the Instagram servers. NOTE: use error boundaries and window.gm_authFailure callback function
+- [x] Data requests that fail are handled gracefully using common fallback techniques (i.e. AJAX error or fail methods). 'Gracefully' means the user isn’t left wondering why a component isn’t working. If an API doesn’t load there should be some visible indication on the page that it didn’t load.
+- [x] You should handle errors if the browser has trouble initially reaching the third-party site as well. For example, consider a user using your Neighborhood Map, but the user's firewall prevents him/her from accessing the Instagram servers. NOTE: use error boundaries and window.gm_authFailure callback function
 
 ### Interface Design
 - [x] All application components render on-screen in a responsive manner.
@@ -38,11 +38,11 @@ Develop a single page application featuring a map of your neighborhood or a neig
 - [x] All content-related images include appropriate alternate text that clearly describes the content of the image.
 
 ### Offline Use
-- [] When available in the browser, the site uses a service worker to cache responses to requests for site assets. Visited pages are rendered when there is no network access.
+- [x] When available in the browser, the site uses a service worker to cache responses to requests for site assets. Visited pages are rendered when there is no network access.
 
 ### Documentation
-- [] A README file is included detailing all steps required to successfully run the application.
-- [] Comments are present and effectively explain longer code procedures.
+- [x] A README file is included detailing all steps required to successfully run the application.
+- [x] Comments are present and effectively explain longer code procedures.
 - [] Remove all to-dos in my code
 
 #### Step 1. Break down the app into a hierarchy of components. Draw a box around each React component.

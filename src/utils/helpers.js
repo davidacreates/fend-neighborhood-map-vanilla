@@ -4,7 +4,7 @@ import { mapBase } from './api';
 // load google maps script
 // reference: https://github.com/ryanwaite28/script-store/blob/master/js/react_resolve_google_maps.js
 export function loadGoogleMaps() {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     // define the global callback that will run when google maps is loaded
     window.resolveGoogleMapsPromise = function() {
       // resolve the google object
@@ -18,23 +18,5 @@ export function loadGoogleMaps() {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
-
-    // TODO: See if this reject message actually works
-    window.reject = function() {
-      const message = `Could not load google maps`;
-      reject(new Error(message));
-    };
   });
-}
-
-// TODO: Delete this function as the one above replaces it
-// load google maps script
-// reference: https://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/
-export function loadScript(url) {
-  const ref = window.document.getElementsByTagName('script')[1];
-  const script = window.document.createElement('script');
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  ref.parentNode.insertBefore(script, ref);
 }

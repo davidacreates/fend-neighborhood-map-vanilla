@@ -82,7 +82,9 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
-        alert('Your page could not be loaded.');
+        alert(
+          'There was a problem loading the page. Please check your api key.'
+        );
       });
   };
 

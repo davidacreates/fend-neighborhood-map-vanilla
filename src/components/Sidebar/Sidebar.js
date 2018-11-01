@@ -29,7 +29,6 @@ export default class Sidebar extends Component {
             onChange={e => filterList(e.target.value)}
           />
 
-          {/* TODO: Make the filtered list accessible */}
           {filteredVenues &&
             filteredVenues.length > 0 &&
             filteredVenues.map((v, index) => (
