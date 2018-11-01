@@ -7,32 +7,27 @@ html, body {
   padding: 0;
 }
 
-
-/* MAP STYLES */
-
-/* Always set the map height explicitly to define the size of the div element that contains the map. */
-#map {
-  height: 90vh;
-}
-
-#sidebar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: white;
-  width: 350px;
-  max-width: 100%;
+#root {
   height: 100%;
-  max-height: 90vh;
-  padding: 0 2rem 2rem 2rem;
-  z-index: 99;
 }
 
-input {
-  margin-bottom: 2rem;
-  width: 100%;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.venueListItem {
-  padding: 1rem;
+input:focus,
+button:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+    border: none;
+}
+
+#map,
+#sidebar {
+  top: 60px;
+  height: calc(100vh - 60px);
 }

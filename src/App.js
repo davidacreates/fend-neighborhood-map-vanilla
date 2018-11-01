@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { loadGoogleMaps } from './utils/helpers';
 import { getVenues } from './utils/api';
-import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar/Navbar';
+import Sidebar from './components/Sidebar/Sidebar';
+import Map from './components/Map';
 import './App.css';
 
 class App extends Component {
   state = {
     query: '',
+    sidebarOpen: false,
+    filteredVenues: null,
   };
 
   // asynchronously load google maps using the promise created in the helper file
@@ -78,11 +82,13 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
+        alert('Your page could not be loaded.');
       });
   };
 
   // use the filter method to find the marker that matches the venue id of the list item clicked
-  handleClick = venue => {
+  // show info window for that marker
+  handleVenueListItemClick = venue => {
     const marker = this.markers.filter(m => m.id === venue.id)[0];
     const contentString = `<p>${venue.name}</p>`;
     this.infowindow.setContent(contentString);
@@ -114,16 +120,39 @@ class App extends Component {
     this.setState({ filteredVenues: f, query });
   };
 
+  // click handler to open and close the sidebar
+  sidebarToggleClickHandler = () => {
+    this.setState(prevState => ({ sidebarOpen: !prevState.sidebarOpen }));
+  };
+
+  // handle selecting list item when pressing the enter key
+  keyEnter = (e, venue) => {
+    if (e.key === 'Enter') {
+      this.handleVenueListItemClick(venue);
+    }
+  };
+
   render() {
-    const { filteredVenues } = this.state;
-    return (
-      <>
-        <div id="map" />
+    const { filteredVenues, sidebarOpen } = this.state;
+    let sidebar;
+
+    if (sidebarOpen) {
+      sidebar = (
         <Sidebar
-          handleClick={this.handleClick}
+          handleVenueListItemClick={this.handleVenueListItemClick}
           filterList={this.filterList}
           filteredVenues={filteredVenues}
+          keyEnter={this.keyEnter}
         />
+      );
+    }
+    return (
+      <>
+        <Navbar sidebarClickHandler={this.sidebarToggleClickHandler} />
+        <main>
+          {sidebar}
+          <Map />
+        </main>
       </>
     );
   }

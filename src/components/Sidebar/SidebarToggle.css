@@ -1,0 +1,22 @@
+.sidebar-toggle {
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 1.5rem;
+  width: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-toggle:focus {
+  outline: 3px solid #343a40;
+}
+
+.sidebar-toggle__line {
+  width: 2rem;
+  height: 3px;
+  background: #ffe8cc;
+}

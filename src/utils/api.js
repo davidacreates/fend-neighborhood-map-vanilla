@@ -30,12 +30,6 @@ export function squareAuth() {
     .join('&');
 }
 
-// simple fetch api with no parameters included in the request
-// will be used to fetch photos for the venue
-export function squareSimpleFetch(endpoint) {
-  return axios.get(`${squareBase()}${endpoint}?${squareAuth()}`);
-}
-
 // returns the params set for the search function
 // i.e near=Ubud&query=food&limit=10
 export function squareParams(urlParams) {
@@ -55,9 +49,4 @@ export function squareParamsFetch(endpoint, urlParams) {
 // returns a list of venues near the current location
 export function getVenues(urlParams) {
   return squareParamsFetch('search', urlParams);
-}
-
-// returns photos for a specific venue
-export function getPhotos(VENUE_ID) {
-  return squareSimpleFetch(`${VENUE_ID}/photos`);
 }
