@@ -11,13 +11,13 @@ Develop a single page application featuring a map of your neighborhood or a neig
 - [x] Write code required to display map markers identifying at least 5 locations that you are interested in within this neighborhood.
 - [x] Map displays all location markers by default, and displays the filtered subset of location markers when a filter is applied.
 - [x] Clicking a marker displays unique information about a location somewhere on the page (modal,separate div, inside an infoWindow).
-- [] Any additional custom functionality provided in the app functions error-free.
+- [x] Any additional custom functionality provided in the app functions error-free.
 
 ### List View
 - [x] A list-view of location names is provided which displays all locations by default
 - [x] Clicking a location on the list displays unique information about the location from a 3rd party API, and animates its associated map marker (e.g. bouncing, color change.)
 - [x] Provide attribution to the data sources and/or APIs you use (e.g., if you are using Foursquare, indicate somewhere in your interface and in your README that you used the Foursquare API)
-- [] List functionality is responsive and runs error free.
+- [x] List functionality is responsive and runs error free.
 
 ### Location Filter
 - [x] Includes a text input field or dropdown menu that filters the map markers and list items to locations matching the text input or selection. Filter function runs error-free.
@@ -26,7 +26,7 @@ Develop a single page application featuring a map of your neighborhood or a neig
 - [x] Application utilizes the Google Maps API or another mapping system and at least one non-Google third-party API
 - [x] All data requests are retrieved in an asynchronous manner using either the Fetch API or XMLHttpRequest.
 - [x] Data requests that fail are handled gracefully using common fallback techniques (i.e. AJAX error or fail methods). 'Gracefully' means the user isn’t left wondering why a component isn’t working. If an API doesn’t load there should be some visible indication on the page that it didn’t load.
-- [x] You should handle errors if the browser has trouble initially reaching the third-party site as well. For example, consider a user using your Neighborhood Map, but the user's firewall prevents him/her from accessing the Instagram servers. NOTE: use error boundaries and window.gm_authFailure callback function
+- [x] You should handle errors if the browser has trouble initially reaching the third-party site as well. For example, consider a user using your Neighborhood Map, but the user's firewall prevents him/her from accessing the Instagram servers.
 
 ### Interface Design
 - [x] All application components render on-screen in a responsive manner.
@@ -43,7 +43,7 @@ Develop a single page application featuring a map of your neighborhood or a neig
 ### Documentation
 - [x] A README file is included detailing all steps required to successfully run the application.
 - [x] Comments are present and effectively explain longer code procedures.
-- [] Remove all to-dos in my code
+- [x] Remove all to-dos in my code
 
 #### Step 1. Break down the app into a hierarchy of components. Draw a box around each React component.
 - App

@@ -4,6 +4,7 @@ import { getVenues } from './utils/api';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Map from './components/Map';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 class App extends Component {
@@ -13,10 +14,14 @@ class App extends Component {
     filteredVenues: null,
   };
 
+  // invoke google authorization-fail handler for api key error
   // asynchronously load google maps using the promise created in the helper file
   // use promise.all to retrieve an array with (1) google the maps object and (2) the foursquare venue data
   // get the venues from the api
   componentDidMount = () => {
+    window.gm_authFailure = () => {
+      alert('Google maps authentication error. Please check your api key.');
+    };
     const googleMapsPromise = loadGoogleMaps();
     const getVenuesPromise = getVenues({
       near: 'Ubud',
@@ -82,15 +87,14 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
-        alert(
-          'There was a problem loading the page. Please check your api key.'
-        );
+        alert('Foursquare authentication error. Please check your api key.');
       });
   };
 
   // use the filter method to find the marker that matches the venue id of the list item clicked
   // show info window for that marker
   handleVenueListItemClick = venue => {
+    this.sidebarToggleClickHandler();
     const marker = this.markers.filter(m => m.id === venue.id)[0];
     const contentString = `<p>${venue.name}</p>`;
     this.infowindow.setContent(contentString);
@@ -150,11 +154,14 @@ class App extends Component {
     }
     return (
       <>
-        <Navbar sidebarClickHandler={this.sidebarToggleClickHandler} />
-        <main>
-          {sidebar}
-          <Map />
-        </main>
+        <ErrorBoundary>
+          <Navbar sidebarClickHandler={this.sidebarToggleClickHandler} />
+
+          <main>
+            {sidebar}
+            <Map />
+          </main>
+        </ErrorBoundary>
       </>
     );
   }
