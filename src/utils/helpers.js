@@ -18,5 +18,10 @@ export function loadGoogleMaps() {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+    script.onerror = function() {
+      document.write(
+        '<h1 style="text-align:center; padding-top: 2rem">Your map failed to load correctly. Please try again.</h1>'
+      );
+    };
   });
 }
