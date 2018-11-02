@@ -4,7 +4,6 @@ import { getVenues } from './utils/api';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 import Map from './components/Map';
-import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 class App extends Component {
@@ -154,14 +153,12 @@ class App extends Component {
     }
     return (
       <>
-        <ErrorBoundary>
-          <Navbar sidebarClickHandler={this.sidebarToggleClickHandler} />
+        <Navbar sidebarClickHandler={this.sidebarToggleClickHandler} />
 
-          <main>
-            {sidebar}
-            <Map />
-          </main>
-        </ErrorBoundary>
+        <main>
+          {sidebar}
+          <Map />
+        </main>
       </>
     );
   }
