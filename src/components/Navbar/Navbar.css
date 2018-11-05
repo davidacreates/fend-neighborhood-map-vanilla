@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fd7e14;
+  height: 60px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+.nav__logo {
+  margin-left: 1rem;
+}
+
+.nav__title {
+  position: relative;
+  top: -3px;
+  color: #343a40;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.nav__title span {
+  position: relative;
+  font-size: 2rem;
+  top: 4px;
+  margin-right: 0.25rem;
+}

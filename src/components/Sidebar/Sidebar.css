@@ -1,0 +1,33 @@
+#sidebar {
+  position: fixed;
+  left: 0px;
+  background: #fff4e6;
+  box-shadow: 9px -3px 12px -8px rgba(52, 58, 64, 0.3);
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  z-index: 99;
+}
+
+#sidebar input {
+  font-size: 1rem;
+  height: 30px;
+  background: #ffe8cc;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 85%;
+  max-width: 100%;
+}
+
+#sidebar input:focus,
+.venue-item:focus {
+  outline: 3px solid #ff922b;
+}
+
+.venue-item {
+  padding: 1rem;
+}
